@@ -21,7 +21,7 @@ export default {
           <SearchBar />
           <div class="d-flex justify-content-end">
             <small class="font-italic text-muted">
-              Total users found: {this.users.length}
+              Total users found: <strong>{this.users.length}</strong>
             </small>
           </div>
         </div>

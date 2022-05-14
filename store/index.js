@@ -41,7 +41,7 @@ export const mutations = {
 }
 
 export const actions = {
-  loadUsers({ commit }) {
+  getUsers({ commit }) {
     return this.$axios
       .$get('/users.json')
       .then((r) => {
@@ -56,6 +56,6 @@ export const actions = {
   },
 
   filterUsers({ commit, state }, payload) {
-    searchUsers(commit, state, payload)
+    searchUsers({ commit, state, payload })
   },
 }

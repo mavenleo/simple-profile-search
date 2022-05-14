@@ -1,5 +1,5 @@
 <script>
-import { debounce } from 'lodash'
+import {debounce} from 'lodash'
 import Basic from '../mixins/Basic'
 
 export default {
@@ -28,12 +28,7 @@ export default {
     }, 1000),
   },
   mounted() {
-    const searchQuery = this.$route.params.query
-    this.search = searchQuery
-    if (searchQuery) {
-      // put focus back on the search input if there is a search
-      this.$refs.searchInput.focus()
-    }
+    this.search = this.$route.params.query || ''
   },
 
   render(createElement, context) {

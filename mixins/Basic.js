@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex'
 export default {
   mounted() {
     if (this.userStore.length === 0) {
-      this.$store.dispatch('loadUsers')
+      this.$store.dispatch('getUsers')
     }
   },
 

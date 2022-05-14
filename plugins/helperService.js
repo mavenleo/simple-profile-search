@@ -21,12 +21,12 @@ const highlightMatchingString = (string, query) => {
 /**
  * Helper method to search and filter users
  *
- * @param commit
- * @param state
- * @param payload
+ * @param options
  */
-export const searchUsers = (commit, state, payload) => {
-  if (payload.length > 0) {
+export const searchUsers = (options = {}) => {
+  const { commit, state, payload } = options
+
+  if (payload.length) {
     let users = []
 
     if (state.previousSearch[payload]) {
