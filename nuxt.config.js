@@ -21,10 +21,23 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/helpers.js',
+    '~/plugins/vue-virtual-scroller.js',
+    '~/plugins/axios',
+  ],
+
+  router: {
+    routeNameSplitter: '.',
+  },
+
+  publicRuntimeConfig: {
+    fileUrl: process.env.API_BASE_URL || 'http://18.168.216.238',
+  },
+
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,7 +49,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    // https://go.nuxtjs.dev/bootstrap
+    'bootstrap-vue/nuxt',
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
