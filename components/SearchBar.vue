@@ -39,7 +39,7 @@ export default {
   render(createElement, context) {
     return (
       <section class="search-bar mb-2">
-        <div class="form-group shadow rounded" style="background: #FAFAFA">
+        <div class="form-group shadow search-bar rounded">
           <div class="d-flex align-items-center">
             <div class="p-2">
               <svg
@@ -64,9 +64,8 @@ export default {
                 ref="searchInput"
                 vModel={this.search}
                 type="text"
-                style="background: #FAFAFA"
-                class="form-control form-control-lg border-0"
-                placeholder="Search user..."
+                class="form-control form-control-lg search-bar border-0"
+                placeholder="Search"
               />
             </div>
           </div>
@@ -76,3 +75,9 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.search-bar {
+  background: #fafafa;
+}
+</style>

@@ -17,7 +17,14 @@ export default {
   render(createElement, context) {
     return (
       <section class="users">
-        <SearchBar />
+        <div>
+          <SearchBar />
+          <div class="d-flex justify-content-end">
+            <small class="font-italic text-muted">
+              Total users found: {this.users.length}
+            </small>
+          </div>
+        </div>
 
         {this.users.length === 0 && !this.loadingUsers && (
           <div class="text-center my-5 py-3">
