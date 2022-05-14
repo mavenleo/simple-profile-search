@@ -1,10 +1,10 @@
 <script>
-import ProfileCards from '../../components/UserList'
+import UserList from '../../components/UserList'
 
 export default {
   name: 'Query',
   render(createElement, context) {
-    return <ProfileCards />
+    return <UserList />
   },
 }
 </script>

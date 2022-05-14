@@ -9,7 +9,7 @@ export default {
   mixins: [Basic],
 
   methods: {
-    markAsSuitable(index) {
+    markUserAsSuitable(index) {
       this.users[index].isSuitable = true
     },
   },
@@ -28,14 +28,14 @@ export default {
         {this.loadingUsers ? (
           <Loader />
         ) : (
-          <ul class="profile-cards list-unstyled">
+          <ul class="user-profiles list-unstyled">
             <RecycleScroller
               scopedSlots={{
                 default: ({ item: user, index }) => {
                   return (
                     <User
                       user={user}
-                      onMarked={() => this.markAsSuitable(index)}
+                      onMarked={() => this.markUserAsSuitable(index)}
                     />
                   )
                 },
@@ -70,7 +70,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  .profile-cards {
+  .user-profiles {
     overflow: auto;
     flex-grow: 1;
     height: 100%;

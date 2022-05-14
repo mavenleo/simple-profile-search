@@ -25,7 +25,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/helpers.js',
+    '~/plugins/helperService.js',
     '~/plugins/vue-virtual-scroller.js',
     '~/plugins/axios',
   ],
@@ -37,7 +37,6 @@ export default {
   publicRuntimeConfig: {
     fileUrl: process.env.API_BASE_URL || 'http://18.168.216.238',
   },
-
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

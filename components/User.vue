@@ -9,7 +9,7 @@ export default {
   },
 
   methods: {
-    markAsSuitable() {
+    markUserAsSuitable() {
       this.$emit('marked', true)
       this.$forceUpdate()
     },
@@ -27,7 +27,7 @@ export default {
             class="float-right text-muted small"
             domPropsInnerHTML={this.user.email}
           />
-          <h5 class="" domPropsInnerHTML={this.user.name}></h5>
+          <h5 domPropsInnerHTML={this.user.name}></h5>
           <h6
             class="font-weight-bold text-muted m-0"
             domPropsInnerHTML={this.user.title}
@@ -44,7 +44,7 @@ export default {
                 <h6 class="text-success m-0">SKIP SELECTION</h6>
               </a>
             ) : (
-              <a href="#" onClick={() => this.markAsSuitable()}>
+              <a href="#" onClick={this.markUserAsSuitable}>
                 <h6 class="m-0">MARK AS SUITABLE</h6>
               </a>
             )}
@@ -64,7 +64,6 @@ export default {
   margin-bottom: 24px;
   overflow: hidden;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
 
   &:hover {
     border: 1px solid #4765ff;

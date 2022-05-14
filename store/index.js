@@ -1,4 +1,4 @@
-import { highlightMatchingString } from '@/plugins/helpers'
+import { searchUsers } from '@/plugins/helperService'
 
 export const state = () => ({
   userStore: [],
@@ -56,38 +56,6 @@ export const actions = {
   },
 
   filterUsers({ commit, state }, payload) {
-    if (payload.length > 0) {
-      let users = []
-
-      if (state.previousSearch[payload]) {
-        // load previous result gotten from same search
-        users = state.previousSearch[payload]
-      } else {
-        users = state.userStore.reduce((users, user) => {
-          const email = highlightMatchingString(user.email, payload)
-          const name = highlightMatchingString(user.name, payload)
-          const title = highlightMatchingString(user.title, payload)
-          const city = highlightMatchingString(user.city, payload)
-
-          if (email || name || title || city) {
-            users.push({
-              ...user,
-              email: email || user.email,
-              name: name || user.name,
-              title: title || user.title,
-              city: city || user.city,
-            })
-          }
-
-          return users
-        }, [])
-
-        commit('UPDATE_CACHE', { key: payload, users })
-      }
-
-      commit('UPDATE_USERS', users)
-    } else {
-      commit('UPDATE_USERS', state.userStore)
-    }
+    searchUsers(commit, state, payload)
   },
 }
