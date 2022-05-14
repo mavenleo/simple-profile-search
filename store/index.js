@@ -1,19 +1,19 @@
-import { searchUsers } from '@/plugins/helperService'
+import { searchUsers, getUsers } from '@/plugins/helperService'
 
 export const state = () => ({
-  userStore: [],
-  users: [],
+  allUsers: [],
+  filteredUsers: [],
   previousSearch: {},
   loadingUsers: true,
 })
 
 export const getters = {
-  userStore(state) {
-    return state.userStore
+  allUsers(state) {
+    return state.allUsers
   },
 
-  users(state, getters) {
-    return state.users
+  filteredUsers(state, getters) {
+    return state.filteredUsers
   },
 
   loadingUsers(state, getters) {
@@ -27,12 +27,11 @@ export const mutations = {
   },
 
   SAVE_USERS_TO_STORE(state, users) {
-    // console.log(users)
-    state.userStore = users
+    state.allUsers = users
   },
 
-  UPDATE_USERS(state, users) {
-    state.users = users
+  UPDATE_FILTERED_USERS(state, users) {
+    state.filteredUsers = users
   },
 
   SET_LOADING(state, isLoading) {
@@ -42,17 +41,7 @@ export const mutations = {
 
 export const actions = {
   getUsers({ commit }) {
-    return this.$axios
-      .$get('/users.json')
-      .then((r) => {
-        commit('SAVE_USERS_TO_STORE', r)
-        commit('UPDATE_USERS', r)
-
-        return r
-      })
-      .finally(() => {
-        commit('SET_LOADING', false)
-      })
+    return getUsers({ commit, Axios: this.$axios })
   },
 
   filterUsers({ commit, state }, payload) {

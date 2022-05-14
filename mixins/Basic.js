@@ -2,15 +2,15 @@ import { mapGetters } from 'vuex'
 
 export default {
   mounted() {
-    if (this.userStore.length === 0) {
+    if (!this.allUsers.length) {
       this.$store.dispatch('getUsers')
     }
   },
 
   computed: {
     ...mapGetters({
-      userStore: 'userStore',
-      users: 'users',
+      allUsers: 'allUsers',
+      users: 'filteredUsers',
       loadingUsers: 'loadingUsers',
     }),
   },

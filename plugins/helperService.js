@@ -1,4 +1,24 @@
 /**
+ * Helper method to get users from users.json
+ *
+ * @returns {string}
+ * @param options
+ */
+export const getUsers = (options = {}) => {
+  const { commit, Axios } = options
+  Axios.$get('/users.json')
+    .then((r) => {
+      commit('SAVE_USERS_TO_STORE', r)
+      commit('UPDATE_FILTERED_USERS', r)
+
+      return r
+    })
+    .finally(() => {
+      commit('SET_LOADING', false)
+    })
+}
+
+/**
  * Helper method to highlight search param occurrence in string
  *
  * @param string
@@ -33,7 +53,7 @@ export const searchUsers = (options = {}) => {
       // load previous result gotten from same search
       users = state.previousSearch[payload]
     } else {
-      users = state.userStore.reduce((users, user) => {
+      users = state.allUsers.reduce((users, user) => {
         const email = highlightMatchingString(user.email, payload)
         const name = highlightMatchingString(user.name, payload)
         const title = highlightMatchingString(user.title, payload)
@@ -55,8 +75,8 @@ export const searchUsers = (options = {}) => {
       commit('UPDATE_CACHE', { key: payload, users })
     }
 
-    commit('UPDATE_USERS', users)
+    commit('UPDATE_FILTERED_USERS', users)
   } else {
-    commit('UPDATE_USERS', state.userStore)
+    commit('UPDATE_FILTERED_USERS', state.allUsers)
   }
 }
