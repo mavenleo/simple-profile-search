@@ -10,7 +10,7 @@ export default {
 
   methods: {
     markUserAsSuitable(index) {
-      this.users[index].isSuitable = true
+      this.users[index].marked = !this.users[index].marked
     },
   },
 

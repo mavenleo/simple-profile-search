@@ -39,15 +39,11 @@ export default {
           />
 
           <div class="mt-auto mt-sm-3">
-            {this.user.isSuitable ? (
-              <a href="#">
-                <h6 class="profile-action m-0">SKIP SELECTION</h6>
-              </a>
-            ) : (
-              <a href="#" onClick={this.markUserAsSuitable}>
-                <h6 class="m-0 profile-action">MARK AS SUITABLE</h6>
-              </a>
-            )}
+            <a href="#" onClick={this.markUserAsSuitable}>
+              <h6 class="m-0 profile-action">
+                {this.user.marked ? 'SKIP SELECTION' : 'MARK AS SUITABLE'}
+              </h6>
+            </a>
           </div>
         </div>
       </li>
