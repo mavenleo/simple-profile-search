@@ -19,7 +19,11 @@ export default {
     return (
       <li key={this.user.email} class="user-profile list-item d-flex">
         <div>
-          <img src={this.user.avatar} alt={this.user.name} class="user-picture" />
+          <img
+            src={this.user.avatar}
+            alt={this.user.name}
+            class="user-picture"
+          />
         </div>
 
         <div class="flex-grow-1 px-3 py-2">
