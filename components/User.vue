@@ -9,7 +9,7 @@ export default {
   },
 
   methods: {
-    markUserAsSuitable() {
+    changeUserStatus() {
       this.$emit('marked', true)
       this.$forceUpdate()
     },
@@ -39,7 +39,7 @@ export default {
           />
 
           <div class="mt-auto mt-sm-3">
-            <a href="#" onClick={this.markUserAsSuitable}>
+            <a href="#" onClick={this.changeUserStatus}>
               <h6 class="m-0 profile-action">
                 {this.user.marked ? 'SKIP SELECTION' : 'MARK AS SUITABLE'}
               </h6>

@@ -9,7 +9,7 @@ export default {
   mixins: [StateMixin],
 
   methods: {
-    markUserAsSuitable(index) {
+    changeUserStatus(index) {
       this.users[index].marked = !this.users[index].marked
     },
   },
@@ -37,21 +37,20 @@ export default {
         ) : (
           <ul class="user-profiles list-unstyled">
             <RecycleScroller
-              scopedSlots={{
-                default: ({ item: user, index }) => {
-                  return (
-                    <User
-                      user={user}
-                      onMarked={() => this.markUserAsSuitable(index)}
-                    />
-                  )
-                },
-              }}
               class="scroller"
               items={this.users}
               item-size={158}
               key-field="email"
-            />
+            >
+              {({ item: user, index }) => {
+                return (
+                  <User
+                    user={user}
+                    onMarked={() => this.changeUserStatus(index)}
+                  />
+                )
+              }}
+            </RecycleScroller>
           </ul>
         )}
       </section>
