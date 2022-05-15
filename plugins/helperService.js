@@ -1,21 +1,15 @@
 /**
  * Helper method to get users from users.json
  *
- * @returns {string}
- * @param options
+ * @param commit
  */
-export const getUsers = (options = {}) => {
-  const { commit, Axios } = options
-  Axios.$get('/users.json')
-    .then((r) => {
-      commit('SAVE_USERS_TO_STORE', r)
-      commit('UPDATE_FILTERED_USERS', r)
-
-      return r
-    })
-    .finally(() => {
-      commit('SET_LOADING', false)
-    })
+export const fetchUsers = async (commit) => {
+  const res = await fetch('/users.json')
+  const users = await res.json()
+  // save details
+  commit('SAVE_USERS_TO_STORE', users)
+  commit('UPDATE_FILTERED_USERS', users) // first time without a search
+  commit('SET_LOADING', false)
 }
 
 /**
@@ -25,7 +19,7 @@ export const getUsers = (options = {}) => {
  * @param query
  * @returns {string}
  */
-const highlightMatchingString = (string, query) => {
+export const highlightMatchingString = (string, query) => {
   const foundInString = string.toLowerCase().includes(query)
 
   if (foundInString) {

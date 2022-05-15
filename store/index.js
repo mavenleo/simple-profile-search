@@ -1,4 +1,4 @@
-import { searchUsers, getUsers } from '@/plugins/helperService'
+import { searchUsers, fetchUsers } from '@/plugins/helperService'
 
 export const state = () => ({
   allUsers: [],
@@ -41,7 +41,7 @@ export const mutations = {
 
 export const actions = {
   getUsers({ commit }) {
-    return getUsers({ commit, Axios: this.$axios })
+    return fetchUsers(commit)
   },
 
   filterUsers({ commit, state }, payload) {

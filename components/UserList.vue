@@ -1,12 +1,12 @@
 <script>
-import Basic from '../mixins/Basic'
-import SearchBar from './SearchBar'
+import StateMixin from '../mixins/StateMixin'
+import Search from './Search'
 import Loader from './Loader'
 import User from './User'
 
 export default {
-  name: 'ProfileCards',
-  mixins: [Basic],
+  name: 'UserList',
+  mixins: [StateMixin],
 
   methods: {
     markUserAsSuitable(index) {
@@ -18,7 +18,7 @@ export default {
     return (
       <section class="users">
         <div>
-          <SearchBar />
+          <Search />
           <div class="d-flex justify-content-end">
             <small class="font-italic text-muted">
               Total users found: <strong>{this.users.length}</strong>

@@ -1,10 +1,10 @@
 <script>
-import {debounce} from 'lodash'
-import Basic from '../mixins/Basic'
+import { debounce } from 'lodash'
+import StateMixin from '../mixins/StateMixin'
 
 export default {
   name: 'SearchBar',
-  mixins: [Basic],
+  mixins: [StateMixin],
   layout: 'default',
   data() {
     return {
@@ -29,11 +29,12 @@ export default {
   },
   mounted() {
     this.search = this.$route.params.query || ''
+    if (this.search) this.$refs.searchInput.focus()
   },
 
   render(createElement, context) {
     return (
-      <section class="search-bar mb-2">
+      <section class="mb-2">
         <div class="form-group shadow search-bar rounded">
           <div class="d-flex align-items-center">
             <div class="p-2">
@@ -59,7 +60,7 @@ export default {
                 ref="searchInput"
                 vModel={this.search}
                 type="text"
-                class="form-control form-control-lg search-bar border-0"
+                class="search-bar-input border-0"
                 placeholder="Search"
               />
             </div>
@@ -74,5 +75,20 @@ export default {
 <style scoped lang="scss">
 .search-bar {
   background: #fafafa;
+  border: none;
+  background: none;
+  outline: none !important;
+  &-input {
+    width: 100%;
+    height: 100%;
+    &::placeholder {
+      font-weight: 300;
+      color: #999;
+      background: #fafafa;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
 </style>

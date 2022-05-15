@@ -24,11 +24,7 @@ export default {
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/helperService.js',
-    '~/plugins/vue-virtual-scroller.js',
-    '~/plugins/axios',
-  ],
+  plugins: ['~/plugins/helperService.js', '~/plugins/vue-virtual-scroller.js'],
 
   router: {
     routeNameSplitter: '.',
