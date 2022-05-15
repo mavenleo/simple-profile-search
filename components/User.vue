@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'Loader',
+  name: 'User',
   props: {
     user: {
       type: Object,

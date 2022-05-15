@@ -3,7 +3,7 @@ import { debounce } from 'lodash'
 import StateMixin from '../mixins/StateMixin'
 
 export default {
-  name: 'SearchBar',
+  name: 'Search',
   mixins: [StateMixin],
   layout: 'default',
   data() {
