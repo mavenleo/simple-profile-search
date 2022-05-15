@@ -2,7 +2,7 @@
 import UserList from '../components/UserList'
 
 export default {
-  name: 'HomePage',
+  name: 'Index',
   layout: 'default',
   render(createElement, context) {
     return <UserList />
