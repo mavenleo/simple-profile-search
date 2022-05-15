@@ -26,7 +26,7 @@ export default {
           </div>
         </div>
 
-        {this.users.length === 0 && !this.loadingState && (
+        {!this.users.length && !this.loadingState && (
           <div class="text-center my-5 py-3">
             <h4 class="text-muted">No user matches this search.</h4>
           </div>
