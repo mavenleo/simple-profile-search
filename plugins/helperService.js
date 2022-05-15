@@ -49,10 +49,10 @@ export const helpers = {
         users = state.previousSearch[search]
       } else {
         users = state.allUsers.reduce((users, user) => {
-          const regEx = new RegExp(search, 'gi')
+          const re = new RegExp(search, 'gi')
           const { email, title, city, name, ...rest } = user
 
-          if (Object.values({ email, title, city, name }).join().match(regEx)) {
+          if (Object.values({ email, title, city, name }).join().match(re)) {
             users.push({
               ...rest,
               email: helpers.highlight(email, search) || user.email,
