@@ -61,6 +61,13 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
 .users {
   position: fixed;
   top: 0;
@@ -86,5 +93,9 @@ export default {
       height: inherit;
     }
   }
+}
+
+.text-highlight {
+  background: #fff73b;
 }
 </style>
