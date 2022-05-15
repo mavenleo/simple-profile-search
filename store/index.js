@@ -46,7 +46,7 @@ export const actions = {
     return this.$helpers.fetchUsers(commit)
   },
 
-  filterUsers({ commit, state }, payload) {
-    this.$helpers.searchUsers({ commit, state, payload })
+  filterUsers({ commit, state }, search) {
+    this.$helpers.searchUsers({ commit, state, search })
   },
 }
