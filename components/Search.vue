@@ -12,6 +12,7 @@ export default {
     }
   },
   watch: {
+    deep: true,
     search: debounce(function (query = '') {
       this.$store.dispatch('filterUsers', query).then(() => {
         const path = query ? `/search/${query}` : '/'
@@ -19,8 +20,10 @@ export default {
       })
     }, 1000),
   },
-  mounted() {
+  beforeMount() {
     this.search = this.$route.params.query || ''
+  },
+  mounted() {
     if (this.search) this.$refs.searchInput.focus()
   },
 
