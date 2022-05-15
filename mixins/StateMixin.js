@@ -11,7 +11,7 @@ export default {
     ...mapGetters({
       allUsers: 'allUsers',
       users: 'filteredUsers',
-      loadingUsers: 'loadingUsers',
+      loadingState: 'loadingState',
     }),
   },
 }

@@ -1,10 +1,8 @@
-import { searchUsers, fetchUsers } from '@/plugins/helperService'
-
 export const state = () => ({
+  loadingState: true,
   allUsers: [],
   filteredUsers: [],
   previousSearch: {},
-  loadingUsers: true,
 })
 
 export const getters = {
@@ -16,17 +14,13 @@ export const getters = {
     return state.filteredUsers
   },
 
-  loadingUsers(state, getters) {
-    return state.loadingUsers
+  loadingState(state, getters) {
+    return state.loadingState
   },
 }
 
 export const mutations = {
-  UPDATE_CACHE(state, data) {
-    state.previousSearch[data.key] = data.users
-  },
-
-  SAVE_USERS_TO_STORE(state, users) {
+  SAVE_ALL_USERS(state, users) {
     state.allUsers = users
   },
 
@@ -34,17 +28,25 @@ export const mutations = {
     state.filteredUsers = users
   },
 
-  SET_LOADING(state, isLoading) {
-    state.loadingUsers = isLoading
+  ADD_TO_PREVIOUS_SEARCH(state, options = {}) {
+    const { search, users } = options
+    state.previousSearch = {
+      ...state.previousSearch,
+      [search]: users,
+    }
+  },
+
+  SET_LOADING_STATE(state, isLoading) {
+    state.loadingState = isLoading
   },
 }
 
 export const actions = {
   getUsers({ commit }) {
-    return fetchUsers(commit)
+    return this.$helpers.fetchUsers(commit)
   },
 
   filterUsers({ commit, state }, payload) {
-    searchUsers({ commit, state, payload })
+    this.$helpers.searchUsers({ commit, state, payload })
   },
 }
