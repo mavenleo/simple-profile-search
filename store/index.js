@@ -47,6 +47,7 @@ export const actions = {
   },
 
   filterUsers({ commit, state }, search) {
+    search = search.trim().toLowerCase()
     this.$helpers.searchUsers({ commit, state, search })
   },
 }
