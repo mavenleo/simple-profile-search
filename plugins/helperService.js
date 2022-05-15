@@ -19,7 +19,7 @@ export const fetchUsers = async (commit) => {
  * @param query
  * @returns {string}
  */
-export const highlightMatchingString = (string, query) => {
+const highlight = (string, query) => {
   const foundInString = string.toLowerCase().includes(query)
 
   if (foundInString) {
@@ -48,18 +48,17 @@ export const searchUsers = (options = {}) => {
       users = state.previousSearch[payload]
     } else {
       users = state.allUsers.reduce((users, user) => {
-        const email = highlightMatchingString(user.email, payload)
-        const name = highlightMatchingString(user.name, payload)
-        const title = highlightMatchingString(user.title, payload)
-        const city = highlightMatchingString(user.city, payload)
+        const regEx = new RegExp(payload, 'gi')
 
-        if (email || name || title || city) {
+        const { email, title, city, name, ...rest } = user
+
+        if (Object.values({ email, title, city, name }).join().match(regEx)) {
           users.push({
-            ...user,
-            email: email || user.email,
-            name: name || user.name,
-            title: title || user.title,
-            city: city || user.city,
+            ...rest,
+            email: highlight(email, payload) || user.email,
+            name: highlight(name, payload) || user.name,
+            title: highlight(title, payload) || user.title,
+            city: highlight(city, payload) || city.email,
           })
         }
 
