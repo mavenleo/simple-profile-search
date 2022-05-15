@@ -13,10 +13,8 @@ export default {
   },
   watch: {
     search: debounce(function (query = '') {
-      const searchQuery = query.trim().toLowerCase()
-
-      this.$store.dispatch('filterUsers', searchQuery).then(() => {
-        const path = searchQuery ? `/search/${searchQuery}` : '/'
+      this.$store.dispatch('filterUsers', query).then(() => {
+        const path = query ? `/search/${query}` : '/'
         this.$router.push({ path })
       })
     }, 1000),
