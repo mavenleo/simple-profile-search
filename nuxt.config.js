@@ -20,6 +20,9 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: ['~/assets/scss/app.scss'],
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/helperService.js', '~/plugins/vue-virtual-scroller.js'],
 

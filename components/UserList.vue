@@ -37,7 +37,7 @@ export default {
         ) : (
           <ul class="user-profiles list-unstyled">
             <RecycleScroller
-              class="scroller"
+              class="virtual-scroll"
               items={this.users}
               item-size={158}
               key-field="email"
@@ -60,13 +60,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #eee;
-  margin: 0;
-  padding: 0;
-}
-
 .users {
   position: fixed;
   top: 0;
@@ -88,13 +81,9 @@ body {
     flex-grow: 1;
     height: 100%;
 
-    .scroller {
+    .virtual-scroll {
       height: inherit;
     }
   }
-}
-
-.text-highlight {
-  background: #fff73b;
 }
 </style>

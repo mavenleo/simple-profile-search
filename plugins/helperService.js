@@ -21,16 +21,9 @@ export const helpers = {
    * @returns {string}
    */
   highlight: (string, query) => {
-    const foundInString = string.toLowerCase().includes(query)
-
-    if (foundInString) {
-      return string.replace(new RegExp(query, 'gi'), (match) => {
-        return `<span class='text-highlight'>${match}</span>`
-      })
-    }
-
-    // Do nothing I guess
-    return ''
+    return string.replace(new RegExp(query, 'gi'), (match) => {
+      return `<span class='text-highlight'>${match}</span>`
+    })
   },
 
   /**
@@ -55,10 +48,10 @@ export const helpers = {
           if (Object.values({ email, title, city, name }).join().match(re)) {
             users.push({
               ...rest,
-              email: helpers.highlight(email, search) || user.email,
-              name: helpers.highlight(name, search) || user.name,
-              title: helpers.highlight(title, search) || user.title,
-              city: helpers.highlight(city, search) || user.city,
+              email: helpers.highlight(email, search),
+              name: helpers.highlight(name, search),
+              title: helpers.highlight(title, search),
+              city: helpers.highlight(city, search),
             })
           }
 
