@@ -58,7 +58,7 @@ export const searchUsers = (options = {}) => {
             email: highlight(email, payload) || user.email,
             name: highlight(name, payload) || user.name,
             title: highlight(title, payload) || user.title,
-            city: highlight(city, payload) || city.email,
+            city: highlight(city, payload) || user.city,
           })
         }
 
