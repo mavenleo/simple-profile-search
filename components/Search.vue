@@ -16,14 +16,8 @@ export default {
       const searchQuery = query.trim().toLowerCase()
 
       this.$store.dispatch('filterUsers', searchQuery).then(() => {
-        if (searchQuery) {
-          this.$router.push({
-            name: 'search.query',
-            params: { query: searchQuery },
-          })
-        } else {
-          this.$router.push({ name: 'index' })
-        }
+        const path = searchQuery ? `/search/${searchQuery}` : '/'
+        this.$router.push({ path })
       })
     }, 1000),
   },
