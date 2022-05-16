@@ -12,6 +12,7 @@ export default {
   },
   watch: {
     search: debounce(function (query = '') {
+      query = query.trim().toLowerCase()
       this.$store.dispatch('filterUsers', query).then(() => {
         const path = query ? `/search/${query}` : '/'
         this.$router.push({ path })
