@@ -4,7 +4,7 @@ export class Helpers {
    *
    * @param commit
    */
-  async fetchUsers(commit) {
+  fetchUsers = async (commit) => {
     const res = await fetch('/users.json')
     const users = await res.json()
     // save details
@@ -20,7 +20,7 @@ export class Helpers {
    * @param query
    * @returns {string}
    */
-  highlight(string, query) {
+  highlight = (string, query) => {
     const foundInString = string.toLowerCase().includes(query)
 
     if (foundInString) {
@@ -37,7 +37,7 @@ export class Helpers {
    *
    * @param options
    */
-  searchUsers(options = {}) {
+  searchUsers = (options = {}) => {
     const { commit, state, search } = options
 
     if (search.length) {
