@@ -40,40 +40,39 @@ export class Helpers {
   searchUsers = (options = {}) => {
     const { commit, state, search } = options
 
-    if (search.length) {
-      let users = []
-
-      if (state.previousSearch[search]) {
-        // load previous result gotten from same search
-        users = state.previousSearch[search]
-      } else {
-        users = state.allUsers.reduce((users, user) => {
-          const re = new RegExp(search, 'gi')
-          const { email, title, city, address, name, ...rest } = user
-
-          if (
-            Object.values({ email, title, city, address, name })
-              .join()
-              .match(re)
-          ) {
-            users.push({
-              ...rest,
-              email: this.highlight(email, search),
-              name: this.highlight(name, search),
-              title: this.highlight(title, search),
-              city: this.highlight(city, search),
-              address: this.highlight(address, search),
-            })
-          }
-
-          return users
-        }, [])
-        commit('ADD_TO_PREVIOUS_SEARCH', { search, users })
-      }
-      commit('UPDATE_FILTERED_USERS', users)
-    } else {
+    if (!search.length) {
       commit('UPDATE_FILTERED_USERS', state.allUsers)
+      return
     }
+
+    if (state.previousSearch[search]) {
+      commit('UPDATE_FILTERED_USERS', state.previousSearch[search])
+      return
+    }
+
+    // if none of this, do a new search from all users
+    let users = []
+    users = state.allUsers.reduce((users, user) => {
+      const re = new RegExp(search, 'gi')
+      const { email, title, city, address, name, ...rest } = user
+
+      if (
+        Object.values({ email, title, city, address, name }).join().match(re)
+      ) {
+        users.push({
+          ...rest,
+          email: this.highlight(email, search),
+          name: this.highlight(name, search),
+          title: this.highlight(title, search),
+          city: this.highlight(city, search),
+          address: this.highlight(address, search),
+        })
+      }
+
+      return users
+    }, [])
+    commit('UPDATE_FILTERED_USERS', users)
+    commit('ADD_TO_PREVIOUS_SEARCH', { search, users })
   }
 }
 
