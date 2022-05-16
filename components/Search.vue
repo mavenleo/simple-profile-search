@@ -16,7 +16,7 @@ export default {
         const path = query ? `/search/${query}` : '/'
         this.$router.push({ path })
       })
-    }, 1000),
+    }, 500),
   },
   mounted() {
     this.search = this.$route.params.query || ''
