@@ -11,7 +11,6 @@ export default {
     }
   },
   watch: {
-    deep: true,
     search: debounce(function (query = '') {
       this.$store.dispatch('filterUsers', query).then(() => {
         const path = query ? `/search/${query}` : '/'
@@ -68,7 +67,6 @@ export default {
 <style scoped lang="scss">
 .search-bar {
   border: none;
-  outline: none;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
   & * {
     background: #fafafa;
