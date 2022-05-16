@@ -75,7 +75,7 @@ export default {
     object-fit: cover;
     background: #ccc;
   }
-  
+
   .profile-action {
     color: #009688;
   }
