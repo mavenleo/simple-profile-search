@@ -5,7 +5,6 @@ import StateMixin from '../mixins/StateMixin'
 export default {
   name: 'Search',
   mixins: [StateMixin],
-  layout: 'default',
   data() {
     return {
       search: '',
