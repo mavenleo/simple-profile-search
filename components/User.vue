@@ -69,7 +69,7 @@ export default {
     margin-bottom: 0;
   }
 
-  .user-picture {
+  img.user-picture {
     width: 130px;
     height: 100%;
     object-fit: cover;
