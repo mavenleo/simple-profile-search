@@ -30,7 +30,7 @@ export default {
   render(createElement, context) {
     return (
       <section class="mb-2">
-        <div class="form-group shadow search-bar rounded">
+        <div class="form-group search-bar rounded">
           <div class="d-flex align-items-center">
             <div class="p-2">
               <svg
@@ -69,17 +69,16 @@ export default {
 
 <style scoped lang="scss">
 .search-bar {
-  background: #fafafa;
   border: none;
-  background: none;
-  outline: none !important;
+  outline: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
+  & * {
+    background: #fafafa;
+  }
   &-input {
     width: 100%;
-    height: 100%;
     &::placeholder {
-      font-weight: 300;
       color: #999;
-      background: #fafafa;
     }
     &:focus {
       outline: none;
