@@ -70,18 +70,12 @@ export default {
   }
 
   img.user-picture {
-        width: 130px;
-        height: 100%;
-        object-fit: cover;
-        background: #ccc;
-  }
-
-  .user-picture {
     width: 130px;
     height: 100%;
     object-fit: cover;
     background: #ccc;
   }
+  
   .profile-action {
     color: #009688;
   }
