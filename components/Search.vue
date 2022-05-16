@@ -19,11 +19,10 @@ export default {
       })
     }, 1000),
   },
-  beforeMount() {
-    this.search = this.$route.params.query || ''
-  },
   mounted() {
-    if (this.search) this.$refs.searchInput.focus()
+    this.search = this.$route.params.query || ''
+
+    this.$refs.searchInput.focus()
   },
 
   render(createElement, context) {
