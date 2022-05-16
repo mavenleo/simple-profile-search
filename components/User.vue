@@ -18,8 +18,8 @@ export default {
   render(createElement, context) {
     return (
       <li key={this.user.email} class="user-profile list-item d-flex">
-        <div class="user-picture">
-          <img src={this.user.avatar} alt="user picture" />
+        <div>
+          <img src={this.user.avatar} alt="user picture" class="user-picture" />
         </div>
 
         <div class="flex-grow-1 px-3 py-2">
@@ -67,6 +67,13 @@ export default {
 
   &:last-of-type {
     margin-bottom: 0;
+  }
+
+  img.user-picture {
+        width: 130px;
+        height: 100%;
+        object-fit: cover;
+        background: #ccc;
   }
 
   .user-picture {
