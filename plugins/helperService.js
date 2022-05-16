@@ -1,17 +1,17 @@
-export const helpers = {
+export class Helpers {
   /**
    * Helper method to get users from users.json
    *
    * @param commit
    */
-  fetchUsers: async (commit) => {
+  async fetchUsers(commit) {
     const res = await fetch('/users.json')
     const users = await res.json()
     // save details
     commit('SAVE_ALL_USERS', users)
     commit('UPDATE_FILTERED_USERS', users) // first time without a search
     commit('SET_LOADING_STATE', false)
-  },
+  }
 
   /**
    * Helper method to highlight search param occurrence in string
@@ -20,7 +20,7 @@ export const helpers = {
    * @param query
    * @returns {string}
    */
-  highlight: (string, query) => {
+  highlight(string, query) {
     const foundInString = string.toLowerCase().includes(query)
 
     if (foundInString) {
@@ -30,14 +30,14 @@ export const helpers = {
     }
 
     return string
-  },
+  }
 
   /**
    * Helper method to search and filter users
    *
    * @param options
    */
-  searchUsers: (options = {}) => {
+  searchUsers(options = {}) {
     const { commit, state, search } = options
 
     if (search.length) {
@@ -58,11 +58,11 @@ export const helpers = {
           ) {
             users.push({
               ...rest,
-              email: helpers.highlight(email, search),
-              name: helpers.highlight(name, search),
-              title: helpers.highlight(title, search),
-              city: helpers.highlight(city, search),
-              address: helpers.highlight(address, search),
+              email: this.highlight(email, search),
+              name: this.highlight(name, search),
+              title: this.highlight(title, search),
+              city: this.highlight(city, search),
+              address: this.highlight(address, search),
             })
           }
 
@@ -74,9 +74,10 @@ export const helpers = {
     } else {
       commit('UPDATE_FILTERED_USERS', state.allUsers)
     }
-  },
+  }
 }
 
 export default ({ app }, inject) => {
+  const helpers = new Helpers()
   inject('helpers', helpers)
 }
