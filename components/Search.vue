@@ -22,7 +22,7 @@ export default {
   mounted() {
     this.search = this.$route.params.query || ''
 
-    if (this.search) this.$refs.searchInput.focus()
+    this.$refs.searchInput.focus()
   },
 
   render(createElement, context) {
