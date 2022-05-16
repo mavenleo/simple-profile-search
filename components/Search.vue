@@ -16,12 +16,12 @@ export default {
         const path = query ? `/search/${query}` : '/'
         this.$router.push({ path })
       })
-    }, 500),
+    }, 1000),
   },
   mounted() {
     this.search = this.$route.params.query || ''
 
-    this.$refs.searchInput.focus()
+    if(this.search) this.$refs.searchInput.focus()
   },
 
   render(createElement, context) {
