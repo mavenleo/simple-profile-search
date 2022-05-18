@@ -18,8 +18,8 @@ export default {
   render(createElement, context) {
     return (
       <li key={this.user.email} class="user-profile list-item d-flex">
-        <div>
-          <img src={this.user.avatar} alt="user picture" class="user-picture" />
+        <div class="user-picture">
+          <img src={this.user.avatar} alt="" />
         </div>
 
         <div class="flex-grow-1 px-3 py-2">
@@ -69,11 +69,14 @@ export default {
     margin-bottom: 0;
   }
 
-  img.user-picture {
-    width: 130px;
+  .user-picture {
     height: 100%;
-    object-fit: cover;
+    width: 130px;
     background: #ccc;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   .profile-action {

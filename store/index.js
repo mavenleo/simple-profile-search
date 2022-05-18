@@ -42,8 +42,8 @@ export const mutations = {
 }
 
 export const actions = {
-  getUsers({ commit }) {
-    return this.$helpers.fetchUsers(commit)
+  getUsers({ commit, state }) {
+    return this.$helpers.fetchUsers({ commit, state })
   },
 
   filterUsers({ commit, state }, search) {

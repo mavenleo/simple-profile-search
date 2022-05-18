@@ -15,9 +15,11 @@ export default {
       query = query.trim().toLowerCase()
       this.$store.dispatch('filterUsers', query).then(() => {
         const path = query ? `/search/${query}` : '/'
+
+        localStorage.setItem('lastSearchQuery', query)
         this.$router.push({ path })
       })
-    }, 1000),
+    }, 500),
   },
   mounted() {
     this.search = this.$route.params.query || ''

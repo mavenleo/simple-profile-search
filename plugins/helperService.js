@@ -4,12 +4,18 @@ export class Helpers {
    *
    * @param commit
    */
-  fetchUsers = async (commit) => {
+  fetchUsers = async ({ ...opts }) => {
+    const { commit } = opts
     const res = await fetch('/users.json')
     const users = await res.json()
     // save details
     commit('SAVE_ALL_USERS', users)
-    commit('UPDATE_FILTERED_USERS', users) // first time without a search
+    const search = localStorage.getItem('lastSearchQuery')
+    if (search) {
+      await this.searchUsers({ ...opts, search })
+    } else {
+      commit('UPDATE_FILTERED_USERS', users) // first time without a search
+    }
     commit('SET_LOADING_STATE', false)
   }
 
