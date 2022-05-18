@@ -2,7 +2,7 @@ export class Helpers {
   /**
    * Helper method to get users from users.json
    *
-   * @param commit
+   * @param opts
    */
   fetchUsers = async ({ ...opts }) => {
     const { commit } = opts
@@ -41,10 +41,10 @@ export class Helpers {
   /**
    * Helper method to search and filter users
    *
-   * @param options
+   * @param opts
    */
-  searchUsers = (options = {}) => {
-    const { commit, state, search } = options
+  searchUsers = ({ ...opts }) => {
+    const { commit, state, search } = opts
 
     if (!search.length) {
       commit('UPDATE_FILTERED_USERS', state.allUsers)
