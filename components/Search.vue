@@ -19,7 +19,7 @@ export default {
         localStorage.setItem('lastSearchQuery', query)
         this.$router.push({ path })
       })
-    }, 500),
+    }, 1000),
   },
   mounted() {
     this.search = this.$route.params.query || ''
